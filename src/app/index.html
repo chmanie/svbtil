@@ -21,27 +21,58 @@
       <h1 class="tk-ff-enzo-web">SVBTIL</h2>
     </div>
   </div>
-  <div class="small-11 medium-9 large-8 small-centered columns">
-    <div id="svb-landing-wrapper">
-      <h4 class="tk-ff-enzo-web">(12.07.2014)</h4>
-      <p class="tk-ff-enzo-web">&gt; 10 DJs | draussen | drinnen | umsonst<p>
+  <div class="small-11 medium-9 large-8 small-centered columns svb-content"></div>
+</div>
+
+<script id="tmpl-svb-landing" type="text/x-handlebars-template">
+  <div id="svb-landing-wrapper">
+    <h4 class="tk-ff-enzo-web">(12.07.2014)</h4>
+    <h4 class="tk-ff-enzo-web svb-small">&gt; 10 DJs | draussen | drinnen | umsonst</h4>
+    <div class="svb-landing-content-wrapper">
       <input type="email" id="svb-input-email" placeholder="tilda@swinton.com" />
       <div class="small-9 medium-7 large-6 small-centered columns">
         <a href="#" class="button svb-button large">Ich will dabei sein!</a>
       </div>
     </div>
-    <div id="svb-invite-wrapper">
-      <h4 class="tk-ff-enzo-web">(12.07.2014)</h4>
-      <p class="tk-ff-enzo-web">&gt; 10 DJs | draussen | drinnen | umsonst<p>
-      <h2>Hallo, {{ name }}!</h2>
+  </div>
+</script>
+
+<script id="tmpl-svb-invite" type="text/x-handlebars-template">
+  <div id="svb-invite-wrapper">
+    <h4 class="tk-ff-enzo-web">(12.07.2014)</h4>
+    <h4 class="tk-ff-enzo-web svb-small">&gt; 10 DJs | <span class="attendeeCount"></span> Gäste | draussen | drinnen | umsonst</h4>
+    <h2>Tag, {{ firstName }}!</h2>
+    <p>Du bist eingeladen zum SVBTIL Geburtstags-Spezial! Bitte gib Deine eMail-Adresse ein, um rechtzeitig Infos zu Location und genauer Startzeit zu bekommen.</p>
+    <div id="attendeeWrapper">
+      <form id="attendeeForm" onsubmit="svb.saveAttendees()">
+        <input type="email" id="svb-input-email" placeholder="{{ firstNameLower }}@svbtil.de" required />
+        <p>Bringst Du jemanden mit?</p>
+        <div class="small-4 columns svb-btn-col">
+          <a href="javascript:;" onclick="svb.submitForm(1)" class="tiny button svb-button" style="font-size: 1em;">Nein</a>
+        </div>
+        <div class="small-4 columns svb-btn-col">
+          <a href="javascript:;" onclick="svb.submitForm(2)" class="tiny button svb-button" style="font-size: 1em;">&#43;1</a>
+        </div>
+        <div class="small-4 columns svb-btn-col">
+          <a href="javascript:;" onclick="svb.submitForm(3)" class="tiny button svb-button" style="font-size: 1em;">&#43;2</a>
+        </div>
+        <input type="submit" value="submit" id="submitBtn" />
+      </form>
     </div>
   </div>
-</div>
+</script>
+
+<script id="tmpl-svb-thanks" type="text/x-handlebars-template">
+  <h1>Danke</h1>
+  <h4>Ich melde mich bald bei Dir!</h4>
+  <h3>Chris</h3>
+</script>
 
 
 <script src="http://d3js.org/d3.v3.min.js"></script>
 
 <script src="jquery/dist/jquery.js"></script>
+<script src="handlebars/handlebars.js"></script>
 <script src="trianglify/trianglify.js"></script>
 
 <script src="main.js"></script>

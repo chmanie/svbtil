@@ -2,12 +2,14 @@
 
   'use strict';
 
-  var invitee;
+  var invitee, templateInvitee, templateLanding, templateThanks, attendeeCount, userAttendees;
 
   var ANIM_END = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
-  var TRANSITION_END = 'transitionend oTransitionEnd webkitTransitionEnd';
+  var TRANSITION_END = 'transitionend oTransitionEnd';
+  var API_ENDPOINT = 'http://localhost:9000';
 
   var $ = window.jQuery;
+  var Handlebars = window.Handlebars;
 
   var t = new window.Trianglify();
   var backgroundCanvas = $('.svb-background-canvas');
@@ -32,11 +34,13 @@
       var inviteeId = window.location.hash.substr(1);
 
       $.ajax({
-        url: 'http://localhost:9000/v1/visitors/' + inviteeId,
+        url: API_ENDPOINT + '/v1/visitors/' + inviteeId,
         type: 'GET',
         crossDomain: true,
         success: function (response) {
-          invitee = response;
+          console.log(response);
+          invitee = response.visitor;
+          attendeeCount = response.attendeeCount;
         },
         error: function (xhr, status) {
           console.log('error');
@@ -44,22 +48,90 @@
         }
       });
 
-    } else {
-
-
-
     }
+
+    templateInvitee = Handlebars.compile($("#tmpl-svb-invite").html());
+    templateLanding = $("#tmpl-svb-landing").html();
+    templateThanks = $("#tmpl-svb-thanks").html();
+
   }
 
+  initialize();
   
 
   $(document).ready(function() {
 
-    initialize();
 
-    animate.headerWrapper(function fadeInContent () {
-      $('#svb-landing-wrapper').addClass('animated fadeIn');
-    });
+    animate.headerWrapper(fadeInContent);
+
+    function fadeInContent () {
+
+      var $content;
+
+      if (invitee && invitee.id) {
+        invitee.firstNameLower = invitee.firstName.toLowerCase();
+        $content = $(templateInvitee(invitee));
+        // poll attendees every 5 secs
+        window.setInterval(refreshAttendeeCount, 5000);
+      } else {
+        $content = $(templateLanding);
+      }
+
+      $content.appendTo($('.svb-content')).addClass('animated fadeIn');
+      $('.attendeeCount').html(attendeeCount);
+
+    }
+
+    function refreshAttendeeCount () {
+      $.ajax({
+        url: API_ENDPOINT + '/v1/events/' + invitee.eventId + '/visitors/count',
+        type: 'GET',
+        crossDomain: true,
+        success: function (response) {
+          attendeeCount = response.sum;
+          $('.attendeeCount')
+            .addClass('animated pulse')
+            .one(ANIM_END, function () {
+              $(this).removeClass('animated pulse');
+            }).html(attendeeCount);
+        },
+        error: function (xhr, status) {
+          console.log(status);
+        }
+      });
+    }
+
+    window.svb = {
+      submitForm: function (attendees) {
+        userAttendees = attendees;
+        $('#submitBtn').click();
+      },
+      saveAttendees: function () {
+
+        var email = $('#svb-invite-wrapper #svb-input-email').val();
+
+        // old browser fallback
+        if (!email) return alert('Hey Du mit diesem alten Browser. Update den ruhig mal und bitte füll auch das E-Mail Feld aus');
+
+        var data = {
+          email: email,
+          attending: userAttendees
+        };
+
+        $.ajax({
+          url: API_ENDPOINT + '/v1/events/' + invitee.eventId + '/visitors/' + invitee.id,
+          type: 'PUT',
+          data: data,
+          crossDomain: true,
+          success: function (response) {
+            $('#attendeeWrapper').html(templateThanks);
+          },
+          error: function (xhr, status) {
+            alert('Bad bad error!');
+          }
+        });
+      }
+    };
     
   });
 

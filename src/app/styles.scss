@@ -11,6 +11,21 @@ body {
   font-family: 'Source Sans Pro', sans-serif;
 }
 
+h1, h2, h3, h4, p {
+  font-family: 'Source Sans Pro', sans-serif;
+  font-weight: 200;
+  color: $primary-text-color;
+}
+
+p {
+  font-size: 0.7rem;
+  margin: 0.5rem 0 0.5rem 0;
+}
+
+#submitBtn {
+  display: none;
+}
+
 .svb-background-canvas {
   height: 100%;
   width: 100%;
@@ -25,16 +40,14 @@ body {
 
 #svb-header-wrapper {
   position: relative;
-  margin-top: 13rem;
-  margin-bottom: 3rem;
+  margin-top: 10rem;
   text-align: center;
   opacity: 0;
   @include animation-duration(3s);
 
   h1 {
-    color: $primary-text-color;
     margin: 0;
-    font-size: 8rem;
+    font-size: 6rem;
     line-height: 1;
     text-shadow: 1px 1px 2px rgba(0,0,0,0.7),
     0px 0px 4px rgba(0,0,0,0.7);
@@ -46,30 +59,50 @@ body {
     }
     &.final-position {
       @include transition(all 1s);
-      @include transform(translate(0rem, -9rem) scale(0.7));
+      @include transform(translate(0rem, -10rem) scale(0.6));
       cursor: auto;
     }
   }
 }
 
+.svb-btn-col {
+  padding: 0;
+}
+
 #svb-landing-wrapper {
   h4 {
-    color: $primary-text-color;
     margin: 0;
-    font-size: 1.5rem;
+    font-size: 1rem;
+
+    &.svb-small {
+      font-size: 90%;
+    }
   }
   text-align: center;
   opacity: 0;
+  margin-top: -5rem;
+
+  .svb-landing-content-wrapper {
+    margin-top: 2rem;
+  }
 }
 
 #svb-invite-wrapper {
-  h2 {
-    color: $primary-text-color;
+  h4 {
     margin: 0;
-    font-size: 2rem;
+    font-size: 1rem;
+
+    &.svb-small {
+      font-size: 90%;
+    }
+  }
+  h2 {
+    margin-top: 0.5rem;
+    font-size: 1.2rem;
   }
   text-align: center;
   opacity: 0;
+  margin-top: -5rem;
 }
 
 #svb-input-email {
@@ -80,8 +113,8 @@ body {
   background-color: transparent;
   font-weight: 200;
   text-align: center;
-  font-size: 1.5rem;
-  height: 3rem;
+  font-size: 1rem;
+  height: 2rem;
 }
 
 ::-webkit-input-placeholder {
@@ -116,16 +149,38 @@ a {
 }
 
 @media #{$medium-up} {
+
+  p {
+    font-size: 1rem;
+  }
+
   #svb-header-wrapper {
+    margin-top: 13rem;
+    
+    margin-bottom: 0;
+
     h1 {
       font-size: 12rem;
+      &.final-position {
+        @include transition(all 1s);
+        @include transform(translate(0rem, -12rem) scale(0.6));
+        cursor: auto;
+      }
     }
   }
 
   #svb-landing-wrapper {
     h4 {
-      font-size: 3rem;
+      font-size: 1.5rem;
     }
+    margin: -2rem 0 0 0;
+  }
+
+  #svb-invite-wrapper {
+    h4 {
+      font-size: 1.5rem;
+    }
+    margin: -2rem 0 0 0;
   }
   
   #svb-input-email {

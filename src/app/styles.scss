@@ -52,11 +52,21 @@ body {
   }
 }
 
-#svb-content-wrapper {
+#svb-landing-wrapper {
   h4 {
     color: $primary-text-color;
     margin: 0;
     font-size: 1.5rem;
+  }
+  text-align: center;
+  opacity: 0;
+}
+
+#svb-invite-wrapper {
+  h2 {
+    color: $primary-text-color;
+    margin: 0;
+    font-size: 2rem;
   }
   text-align: center;
   opacity: 0;
@@ -112,7 +122,7 @@ a {
     }
   }
 
-  #svb-content-wrapper {
+  #svb-landing-wrapper {
     h4 {
       font-size: 3rem;
     }

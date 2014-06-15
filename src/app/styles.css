@@ -4921,13 +4921,21 @@ body {
       transform: translate(0rem, -9rem) scale(0.7);
       cursor: auto; }
 
-#svb-content-wrapper {
+#svb-landing-wrapper {
   text-align: center;
   opacity: 0; }
-  #svb-content-wrapper h4 {
+  #svb-landing-wrapper h4 {
     color: #1c0968;
     margin: 0;
     font-size: 1.5rem; }
+
+#svb-invite-wrapper {
+  text-align: center;
+  opacity: 0; }
+  #svb-invite-wrapper h2 {
+    color: #1c0968;
+    margin: 0;
+    font-size: 2rem; }
 
 #svb-input-email {
   width: 100%;
@@ -4976,7 +4984,7 @@ a.svb-button {
 @media only screen and (min-width:40.063em) {
   #svb-header-wrapper h1 {
     font-size: 12rem; }
-  #svb-content-wrapper h4 {
+  #svb-landing-wrapper h4 {
     font-size: 3rem; }
   #svb-input-email {
     font-size: 2rem;

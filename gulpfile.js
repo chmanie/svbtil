@@ -4,7 +4,7 @@ var gulp = require('gulp')
   , sass = require('gulp-sass');
 
 gulp.task('watch', ['sass-dev'], function () {
-  livereload.listen();
+  livereload.listen(35739);
   gulp.watch('src/app/*.scss', ['sass-dev']);
   gulp.watch('src/app/*.html').on('change', livereload.changed);
 
@@ -23,5 +23,5 @@ gulp.task('sass-dev', function () {
   ])
     .pipe(sass())
     .pipe(gulp.dest('src/app'))
-    .pipe(livereload());
+    .pipe(livereload(35739));
 });

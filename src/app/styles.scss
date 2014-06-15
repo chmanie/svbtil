@@ -3,6 +3,7 @@
 
 
 $primary-text-color: rgba(28, 9, 104, 1);
+$link-hover-color: rgba(255, 255, 255, 0.8);
 $placeholder-color: rgba(28, 9, 104, 0.2);
 
 body {
@@ -24,7 +25,7 @@ body {
 
 #svb-header-wrapper {
   position: relative;
-  margin-top: 10rem;
+  margin-top: 13rem;
   margin-bottom: 3rem;
   text-align: center;
   opacity: 0;
@@ -33,20 +34,32 @@ body {
   h1 {
     color: $primary-text-color;
     margin: 0;
-    font-size: 6rem;
+    font-size: 8rem;
     line-height: 1;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.7),
+    0px 0px 4px rgba(0,0,0,0.7);
+    @include animation(text-glow 1s infinite alternate);
+    @include transition(color 0.5s);
+    &:hover {
+      color: $link-hover-color;
+      cursor: pointer;
+    }
+    &.final-position {
+      @include transition(all 1s);
+      @include transform(translate(0rem, -9rem) scale(0.7));
+      cursor: auto;
+    }
   }
+}
 
+#svb-content-wrapper {
   h4 {
     color: $primary-text-color;
     margin: 0;
-    font-size: 2rem;
+    font-size: 1.5rem;
   }
-
-  &.final-position {
-    @include transition(all 1s);
-    @include transform(translate(0rem, -9rem) scale(0.7));
-  }
+  text-align: center;
+  opacity: 0;
 }
 
 #svb-input-email {
@@ -97,6 +110,9 @@ a {
     h1 {
       font-size: 12rem;
     }
+  }
+
+  #svb-content-wrapper {
     h4 {
       font-size: 3rem;
     }
@@ -107,38 +123,14 @@ a {
     height: 4rem;
   }
 }
-
-.shadow10 {
-         color: yellow;
-         text-shadow: 1px 1px 2px rgba(0,0,0,0.7),
-                      5px 5px 1px orange,
-                      6px 6px 2px rgba(0,0,0,0.7),
-                      10px 10px 1px red,
-                      11px 11px 2px rgba(0,0,0,0.7),
-                      15px 15px 1px purple,
-                      16px 16px 2px rgba(0,0,0,0.7);
-         @include animation(text-snake 1s infinite alternate);
-       }
  
-       /* other prefixed animation blocks ommitted for brevity */
- 
-       @include keyframes(text-snake) {
-         from {
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.7),
-                      5px 5px 1px orange,
-                      6px 6px 2px rgba(0,0,0,0.7),
-                      10px 10px 1px red,
-                      11px 11px 2px rgba(0,0,0,0.7),
-                      15px 15px 1px purple,
-                      16px 16px 2px rgba(0,0,0,0.7);
-         }
-         to {
-            text-shadow: -1px 1px 2px rgba(0,0,0,0.7),
-                      -5px 5px 1px orange,
-                      -6px 6px 2px rgba(0,0,0,0.7),
-                      -10px 10px 1px red,
-                      -11px 11px 2px rgba(0,0,0,0.7),
-                      -15px 15px 1px purple,
-                      -16px 16px 2px rgba(0,0,0,0.7);
-         }
-       }
+@include keyframes(text-glow) {
+  from {
+    text-shadow: 1px 1px 1px rgba(0,0,0,0.7),
+    0px 0px 4px rgba(0,0,0,0.9)
+  }
+  to {
+    text-shadow: 1px 1px 1px rgba(0,0,0,0.7),
+    0px 0px 12px rgba(0,0,0,0.9)
+  }
+}

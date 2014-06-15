@@ -46,6 +46,7 @@ gulp.task('js-build', function () {
   gulp.src([
     'src/app/*.js'
   ])
+    .pipe(replace('http://localhost:9000', 'http://beta.api.dowser.de'))
     .pipe(uglify())
     .pipe(gulp.dest('build'));
 });

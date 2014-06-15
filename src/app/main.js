@@ -29,41 +29,8 @@
   $(document).ready(function() {
 
     animate.headerWrapper();
-
-    $('#DateCountdown').TimeCircles({
-      'animation': 'smooth',
-      'bg_width': 0.2,
-      'fg_width': 0.016666666666666666,
-      'circle_bg_color': 'transparent',
-      'count_past_zero': false,
-      'time': {
-          'Days': {
-              'text': 'Tage',
-              'color': '#1C0968',
-              'show': true
-          },
-          'Hours': {
-              'text': 'Stunden',
-              'color': '#1C0968',
-              'show': true
-          },
-          'Minutes': {
-              'text': 'Minuten',
-              'color': '#1C0968',
-              'show': true
-          },
-          'Seconds': {
-              'text': 'Sekunden',
-              'color': '#1C0968',
-              'show': true
-          }
-      }
-  });
     
   });
 
-  $(window).resize(function() {
-    $('#DateCountdown').TimeCircles().rebuild();
-  });
 
 })(window, document);

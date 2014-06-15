@@ -180,6 +180,9 @@ a, input {
     h4 {
       font-size: 1.5rem;
     }
+    h2 {
+      font-size: 2rem;
+    }
     margin: -2rem 0 0 0;
   }
   
@@ -212,60 +215,25 @@ a, input {
   animation-iteration-count: infinite;
 }
 
-
-@-webkit-keyframes pulse {
+@include keyframes(pulse) {
   0% {
-    -webkit-transform: scale(1);
-    transform: scale(1);
+    @include transform(scale(1));
   }
 
   50% {
-    -webkit-transform: scale(1.1);
-    transform: scale(1.1);
+    @include transform(scale(1.7));
   }
 
   100% {
-    -webkit-transform: scale(1);
-    transform: scale(1);
-  }
-}
-
-@keyframes pulse {
-  0% {
-    -webkit-transform: scale(1);
-    -ms-transform: scale(1);
-    transform: scale(1);
-  }
-
-  50% {
-    -webkit-transform: scale(1.1);
-    -ms-transform: scale(1.1);
-    transform: scale(1.1);
-  }
-
-  100% {
-    -webkit-transform: scale(1);
-    -ms-transform: scale(1);
-    transform: scale(1);
+    @include transform(scale(1));
   }
 }
 
 .pulse {
-  -webkit-animation-name: pulse;
-  animation-name: pulse;
+  @include animation-name(pulse);
 }
 
-@-webkit-keyframes fadeIn {
-  0% {
-    opacity: 0;
-  }
-
-  100% {
-    opacity: 1;
-  }
-}
-
-@keyframes fadeIn {
+@include keyframes(fadeIn) {
   0% {
     opacity: 0;
   }
@@ -276,6 +244,5 @@ a, input {
 }
 
 .fadeIn {
-  -webkit-animation-name: fadeIn;
-  animation-name: fadeIn;
+  @include animation-name(fadeIn);
 }

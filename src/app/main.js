@@ -38,7 +38,6 @@
         type: 'GET',
         crossDomain: true,
         success: function (response) {
-          console.log(response);
           invitee = response.visitor;
           attendeeCount = response.attendeeCount;
         },
@@ -79,6 +78,11 @@
 
       $content.appendTo($('.svb-content')).addClass('animated fadeIn');
       $('.attendeeCount').html(attendeeCount);
+      $('.attendeeCount').html(attendeeCount);
+      if (invitee.email) {
+        $('#svb-invite-wrapper #svb-input-email').val(invitee.email);
+      }
+      $('#attendeeForm').submit(saveAttendees);
 
     }
 
@@ -88,6 +92,7 @@
         type: 'GET',
         crossDomain: true,
         success: function (response) {
+          if (attendeeCount === response.sum) return;
           attendeeCount = response.sum;
           $('.attendeeCount')
             .addClass('animated pulse')
@@ -101,35 +106,38 @@
       });
     }
 
+    function saveAttendees (e) {
+      
+      e.preventDefault();
+
+      var email = $('#svb-invite-wrapper #svb-input-email').val();
+
+      // old browser fallback
+      if (!email) return alert('Hey Du mit diesem alten Browser. Update den ruhig mal und bitte füll auch das E-Mail Feld aus');
+
+      var data = {
+        email: email,
+        attending: userAttendees
+      };
+
+      $.ajax({
+        url: API_ENDPOINT + '/v1/events/' + invitee.eventId + '/visitors/' + invitee.id,
+        type: 'PUT',
+        data: data,
+        crossDomain: true,
+        success: function (response) {
+          $('#attendeeWrapper').html(templateThanks);
+        },
+        error: function (xhr, status) {
+          alert('Kaputt! Bitte versuch\'s nachher noch mal oder update Deinen Browser.');
+        }
+      });
+    }
+
     window.svb = {
       submitForm: function (attendees) {
         userAttendees = attendees;
         $('#submitBtn').click();
-      },
-      saveAttendees: function () {
-
-        var email = $('#svb-invite-wrapper #svb-input-email').val();
-
-        // old browser fallback
-        if (!email) return alert('Hey Du mit diesem alten Browser. Update den ruhig mal und bitte füll auch das E-Mail Feld aus');
-
-        var data = {
-          email: email,
-          attending: userAttendees
-        };
-
-        $.ajax({
-          url: API_ENDPOINT + '/v1/events/' + invitee.eventId + '/visitors/' + invitee.id,
-          type: 'PUT',
-          data: data,
-          crossDomain: true,
-          success: function (response) {
-            $('#attendeeWrapper').html(templateThanks);
-          },
-          error: function (xhr, status) {
-            alert('Kaputt! Bitte versuch\'s nachher noch mal oder update Deinen Browser.');
-          }
-        });
       }
     };
     

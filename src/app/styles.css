@@ -5031,6 +5031,8 @@ a.svb-button, input.svb-button {
     margin: -2rem 0 0 0; }
     #svb-invite-wrapper h4 {
       font-size: 1.5rem; }
+    #svb-invite-wrapper h2 {
+      font-size: 2rem; }
   #svb-input-email {
     font-size: 2rem;
     height: 4rem; } }
@@ -5080,40 +5082,97 @@ a.svb-button, input.svb-button {
   -webkit-animation-iteration-count: infinite;
   animation-iteration-count: infinite; }
 
+@-moz-keyframes pulse {
+  0% {
+    -moz-transform: scale(1);
+    transform: scale(1); }
+
+  50% {
+    -moz-transform: scale(1.7);
+    transform: scale(1.7); }
+
+  100% {
+    -moz-transform: scale(1);
+    transform: scale(1); } }
+
 @-webkit-keyframes pulse {
   0% {
     -webkit-transform: scale(1);
     transform: scale(1); }
 
   50% {
-    -webkit-transform: scale(1.1);
-    transform: scale(1.1); }
+    -webkit-transform: scale(1.7);
+    transform: scale(1.7); }
 
   100% {
     -webkit-transform: scale(1);
     transform: scale(1); } }
 
-@keyframes pulse {
+@-o-keyframes pulse {
   0% {
-    -webkit-transform: scale(1);
+    -o-transform: scale(1);
+    transform: scale(1); }
+
+  50% {
+    -o-transform: scale(1.7);
+    transform: scale(1.7); }
+
+  100% {
+    -o-transform: scale(1);
+    transform: scale(1); } }
+
+@-ms-keyframes pulse {
+  0% {
     -ms-transform: scale(1);
     transform: scale(1); }
 
   50% {
-    -webkit-transform: scale(1.1);
-    -ms-transform: scale(1.1);
-    transform: scale(1.1); }
+    -ms-transform: scale(1.7);
+    transform: scale(1.7); }
 
   100% {
-    -webkit-transform: scale(1);
     -ms-transform: scale(1);
+    transform: scale(1); } }
+
+@keyframes pulse {
+  0% {
+    transform: scale(1); }
+
+  50% {
+    transform: scale(1.7); }
+
+  100% {
     transform: scale(1); } }
 
 .pulse {
   -webkit-animation-name: pulse;
+  -moz-animation-name: pulse;
+  -ms-animation-name: pulse;
+  -o-animation-name: pulse;
   animation-name: pulse; }
 
+@-moz-keyframes fadeIn {
+  0% {
+    opacity: 0; }
+
+  100% {
+    opacity: 1; } }
+
 @-webkit-keyframes fadeIn {
+  0% {
+    opacity: 0; }
+
+  100% {
+    opacity: 1; } }
+
+@-o-keyframes fadeIn {
+  0% {
+    opacity: 0; }
+
+  100% {
+    opacity: 1; } }
+
+@-ms-keyframes fadeIn {
   0% {
     opacity: 0; }
 
@@ -5129,4 +5188,7 @@ a.svb-button, input.svb-button {
 
 .fadeIn {
   -webkit-animation-name: fadeIn;
+  -moz-animation-name: fadeIn;
+  -ms-animation-name: fadeIn;
+  -o-animation-name: fadeIn;
   animation-name: fadeIn; }

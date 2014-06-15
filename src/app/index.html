@@ -30,8 +30,9 @@
     <div class="svb-landing-content-wrapper">
       <form action="http://svbtil.us8.list-manage.com/subscribe/post?u=e702aa94901313486fbb9ff1b&amp;id=14ded2989e" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank">
         <input type="email" value="" name="EMAIL" class="required email" id="svb-input-email" placeholder="tilda@swinton.com" required>
-        <div class="small-9 medium-7 large-6 small-centered columns">
-          <input type="submit" class="button svb-button large" value="Ich will dabei sein!"></input>
+        <div class="small-10 medium-7 large-6 small-centered columns">
+          <input type="submit" class="show-for-small-only button svb-button small" value="Ich will dabei sein!"></input>
+          <input type="submit" class="show-for-medium-up button svb-button large" value="Ich will dabei sein!"></input>
         </div>
       </form>
     </div>
@@ -45,7 +46,7 @@
     <h2>Tag, {{ firstName }}!</h2>
     <p>Du bist eingeladen zum SVBTIL Geburtstags-Spezial! Bitte gib Deine eMail-Adresse ein, um rechtzeitig Infos zu Location und genauer Startzeit zu bekommen.</p>
     <div id="attendeeWrapper">
-      <form id="attendeeForm" onsubmit="svb.saveAttendees()">
+      <form id="attendeeForm">
         <input type="email" id="svb-input-email" placeholder="{{ firstNameLower }}@svbtil.de" required />
         <p>Bringst Du jemanden mit?</p>
         <div class="small-4 columns svb-btn-col">

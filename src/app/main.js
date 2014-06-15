@@ -127,7 +127,7 @@
             $('#attendeeWrapper').html(templateThanks);
           },
           error: function (xhr, status) {
-            alert('Bad bad error!');
+            alert('Kaputt! Bitte versuch\'s nachher noch mal oder update Deinen Browser.');
           }
         });
       }

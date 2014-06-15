@@ -1,0 +1,144 @@
+@import "bower_components/foundation/scss/foundation";
+@import "bower_components/compass-mixins/lib/compass";
+
+
+$primary-text-color: rgba(28, 9, 104, 1);
+$placeholder-color: rgba(28, 9, 104, 0.2);
+
+body {
+  color: $primary-text-color;
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
+.svb-background-canvas {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  position: absolute; 
+  top: 0; 
+  left: 0; 
+  z-index: 0;
+  @include filter(blur(2px));
+}
+
+#svb-header-wrapper {
+  position: relative;
+  margin-top: 10rem;
+  margin-bottom: 3rem;
+  text-align: center;
+  opacity: 0;
+  @include animation-duration(3s);
+
+  h1 {
+    color: $primary-text-color;
+    margin: 0;
+    font-size: 6rem;
+    line-height: 1;
+  }
+
+  h4 {
+    color: $primary-text-color;
+    margin: 0;
+    font-size: 2rem;
+  }
+
+  &.final-position {
+    @include transition(all 1s);
+    @include transform(translate(0rem, -9rem) scale(0.7));
+  }
+}
+
+#svb-input-email {
+  width: 100%;
+  color: $primary-text-color;
+  border: 1px solid $primary-text-color;
+  @include border-radius(2px);
+  background-color: transparent;
+  font-weight: 200;
+  text-align: center;
+  font-size: 1.5rem;
+  height: 3rem;
+}
+
+::-webkit-input-placeholder {
+    color: $placeholder-color;
+}
+:-moz-placeholder {
+    color: $placeholder-color;
+}
+::-moz-placeholder {
+    color: $placeholder-color;
+}
+:-ms-input-placeholder {
+    color: $placeholder-color;
+}
+
+a {
+  &.svb-button {
+    font-family: 'Source Sans Pro', sans-serif;
+    color: $primary-text-color;
+    border: 1px solid $primary-text-color;
+    @include border-radius(2px);
+    background-color: transparent;
+    font-weight: 200;
+    text-align: center;
+    width: 100%;
+
+    &:hover {
+      color: $primary-text-color;
+      background-color: rgba(69, 67, 70, 0.3);
+    }
+  }
+}
+
+@media #{$medium-up} {
+  #svb-header-wrapper {
+    h1 {
+      font-size: 12rem;
+    }
+    h4 {
+      font-size: 3rem;
+    }
+  }
+  
+  #svb-input-email {
+    font-size: 2rem;
+    height: 4rem;
+  }
+}
+
+.shadow10 {
+         color: yellow;
+         text-shadow: 1px 1px 2px rgba(0,0,0,0.7),
+                      5px 5px 1px orange,
+                      6px 6px 2px rgba(0,0,0,0.7),
+                      10px 10px 1px red,
+                      11px 11px 2px rgba(0,0,0,0.7),
+                      15px 15px 1px purple,
+                      16px 16px 2px rgba(0,0,0,0.7);
+         @include animation(text-snake 1s infinite alternate);
+       }
+ 
+       /* other prefixed animation blocks ommitted for brevity */
+ 
+       @include keyframes(text-snake) {
+         from {
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.7),
+                      5px 5px 1px orange,
+                      6px 6px 2px rgba(0,0,0,0.7),
+                      10px 10px 1px red,
+                      11px 11px 2px rgba(0,0,0,0.7),
+                      15px 15px 1px purple,
+                      16px 16px 2px rgba(0,0,0,0.7);
+         }
+         to {
+            text-shadow: -1px 1px 2px rgba(0,0,0,0.7),
+                      -5px 5px 1px orange,
+                      -6px 6px 2px rgba(0,0,0,0.7),
+                      -10px 10px 1px red,
+                      -11px 11px 2px rgba(0,0,0,0.7),
+                      -15px 15px 1px purple,
+                      -16px 16px 2px rgba(0,0,0,0.7);
+         }
+       }

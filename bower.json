@@ -1,0 +1,20 @@
+{
+  "name": "svbtil",
+  "version": "0.0.1",
+  "authors": [
+    "Christian Maniewski <christian@maniewski.de>"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "foundation": "zurb/bower-foundation#~5.2.3",
+    "trianglify": "~0.1.2"
+  }
+}

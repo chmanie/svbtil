@@ -26,6 +26,23 @@ p {
   display: none;
 }
 
+.input-wrapper {
+  position: relative;
+}
+
+#fbButton {
+  height: 20px;
+  position: absolute;
+  bottom: 4px;
+  right: 2px;
+  z-index: 1;
+  cursor: pointer;
+  transition: filter 2s;
+  &:hover {
+    @include filter(blur(1px));
+  }
+}
+
 .svb-background-canvas {
   height: 100%;
   width: 100%;

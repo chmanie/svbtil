@@ -29,7 +29,10 @@
     <h4 class="tk-ff-enzo-web svb-small">6 DJs | draussen | drinnen | umsonst</h4>
     <div class="svb-landing-content-wrapper">
       <form action="http://svbtil.us8.list-manage.com/subscribe/post?u=e702aa94901313486fbb9ff1b&amp;id=14ded2989e" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank">
-        <input type="email" value="" name="EMAIL" class="required email" id="svb-input-email" placeholder="tilda@swinton.com" required>
+        <div class="input-wrapper">
+          <input type="email" value="" name="EMAIL" class="required email" id="svb-input-email" placeholder="tilda@swinton.com" required>
+          <img src="images/fb.png" id="fbButton"></img>
+        </div>
         <div class="small-10 medium-7 large-6 small-centered columns">
           <input type="submit" class="show-for-small-only button svb-button small" value="Ich will dabei sein!"></input>
           <input type="submit" class="show-for-medium-up button svb-button large" value="Ich will dabei sein!"></input>
@@ -42,12 +45,15 @@
 <script id="tmpl-svb-invite" type="text/x-handlebars-template">
   <div id="svb-invite-wrapper">
     <h4 class="tk-ff-enzo-web">(12.07.2014)</h4>
-    <h4 class="tk-ff-enzo-web svb-small">6 DJs | <span class="attendeeCount"></span> Gäste | draussen | drinnen | umsonst</h4>
+    <h4 class="tk-ff-enzo-web svb-small">6 DJs | <span class="attendeeCount"></span> Gäste (bisher) | draussen | drinnen | umsonst</h4>
     <h2>Tag, {{ firstName }}!</h2>
     <p>Du bist eingeladen zum SVBTIL Geburtstags-Spezial! Bitte gib Deine eMail-Adresse ein, um rechtzeitig Infos zu Location und genauer Startzeit zu bekommen.</p>
     <div id="attendeeWrapper">
       <form id="attendeeForm">
-        <input type="email" id="svb-input-email" placeholder="{{ firstNameLower }}@svbtil.de" required />
+        <div class="input-wrapper">
+          <input type="email" id="svb-input-email" placeholder="{{ firstNameLower }}@svbtil.de" required />
+          <img src="images/fb.png" id="fbButton"></img>
+        </div>
         <p>Bringst Du jemanden mit?</p>
         <div class="small-4 columns svb-btn-col">
           <a href="javascript:;" onclick="svb.submitForm(1)" class="tiny button svb-button" style="font-size: 1em;">Nein</a>
@@ -76,6 +82,7 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/1.3.0/handlebars.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/trianglify/0.1.2/trianglify.min.js"></script>
 
+<script src="oauth.js"></script>
 <script src="main.js"></script>
 
 <!-- livereload --><script type="text/javascript">document.write('<script src="' + (location.protocol || 'http:') + '//' + (location.hostname || 'localhost') + ':35739/livereload.js?snipver=1" type="text/javascript"><\/script>')</script><!-- /livereload -->

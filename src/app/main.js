@@ -49,6 +49,15 @@
 
     }
 
+    OAuth.initialize('WQa8zzbB5RaB2I82c8eCjDW9yXM');
+
+    window.svb = {
+      submitForm: function (attendees) {
+        userAttendees = attendees;
+        $('#submitBtn').click();
+      }
+    };
+
     templateInvitee = Handlebars.compile($("#tmpl-svb-invite").html());
     templateLanding = $("#tmpl-svb-landing").html();
     templateThanks = $("#tmpl-svb-thanks").html();
@@ -79,10 +88,25 @@
       $content.appendTo($('.svb-content')).addClass('animated fadeIn');
       $('.attendeeCount').html(attendeeCount);
       $('.attendeeCount').html(attendeeCount);
-      if (invitee.email) {
+      if (invitee && invitee.email) {
         $('#svb-invite-wrapper #svb-input-email').val(invitee.email);
       }
       $('#attendeeForm').submit(saveAttendees);
+
+      $('#fbButton').click(function (e) {
+        e.preventDefault();
+        OAuth.popup('facebook', {authorize:{display:'popup'}}, function(err, result) {
+          if (err) {
+            console.log(err);
+            return;
+          }
+          result.get('/me').done(function(res) {
+            if (res && res.email) {
+              $('#svb-input-email').val(res.email);
+            }
+          });
+        });
+      });
 
     }
 
@@ -134,12 +158,6 @@
       });
     }
 
-    window.svb = {
-      submitForm: function (attendees) {
-        userAttendees = attendees;
-        $('#submitBtn').click();
-      }
-    };
     
   });
 

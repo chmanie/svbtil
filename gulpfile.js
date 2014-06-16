@@ -4,7 +4,8 @@ var gulp = require('gulp')
   , sass = require('gulp-sass')
   , minifyCss = require('gulp-minify-css')
   , uglify = require('gulp-uglify')
-  , replace = require('gulp-replace');
+  , replace = require('gulp-replace')
+  , concat = require('gulp-concat');
 
 gulp.task('watch', ['sass-dev'], function () {
   livereload.listen(35739);
@@ -17,7 +18,7 @@ gulp.task('serve', ['watch'], function (args) {
   serve({ root: ['src/app', 'bower_components', 'src/vendor'], port: 8118 })(args);
 });
 
-gulp.task('build', ['index-build', 'js-build', 'sass-build']);
+gulp.task('build', ['index-build', 'js-build', 'sass-build', 'copy-build']);
 
 
 gulp.task('sass-dev', function () {
@@ -49,6 +50,11 @@ gulp.task('js-build', function () {
     .pipe(replace('http://localhost:9000', 'http://beta.api.dowser.de'))
     .pipe(uglify())
     .pipe(gulp.dest('build'));
+});
+
+gulp.task('copy-build', function () {
+  gulp.src('src/app/images/**/*')
+    .pipe(gulp.dest('build/images'));
 });
 
 gulp.task('index-build', function () {
